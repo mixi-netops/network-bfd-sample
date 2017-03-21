@@ -1,0 +1,26 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+SET(PRJ utsmmr)
+PROJECT(${PRJ})
+
+INCLUDE_DIRECTORIES("/usr/local/include/")
+INCLUDE_DIRECTORIES(("../"))
+
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g -D__TEST__")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g -D__TEST__")
+
+## test target
+SET(SOURCE_FILES
+        ${SOURCE_FILES}
+        smmr_test.cc
+        smmr_memory_test.cc
+        )
+
+ADD_EXECUTABLE(${PRJ} ${SOURCE_FILES})
+TARGET_LINK_LIBRARIES(${PRJ} gtest gtest_main)
+TARGET_LINK_LIBRARIES(${PRJ} pthread)
+TARGET_LINK_LIBRARIES(${PRJ} smmr)
+
+ADD_TEST(smmr-test ${PRJ})
+IF (UNIX AND NOT APPLE)
+    TARGET_LINK_LIBRARIES(${PRJ} rt)
+ENDIF()

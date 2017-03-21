@@ -1,0 +1,27 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+
+SET(PRJ bfdd_cpp)
+PROJECT(${PRJ})
+
+LIST( APPEND CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+SET(BOOST_ROOT "/usr/local/share/")
+FIND_PACKAGE(Boost COMPONENTS thread regex program_options system REQUIRED)
+
+
+INCLUDE_DIRECTORIES("/usr/local/include/")
+INCLUDE_DIRECTORIES("/usr/local/share/include/")
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2")
+
+SET(SOURCE_FILES
+        ${SOURCE_FILES}
+        bfdd_cpp.cc
+    )
+
+ADD_EXECUTABLE(${PRJ} ${SOURCE_FILES})
+TARGET_LINK_LIBRARIES(${PRJ} pthread)
+TARGET_LINK_LIBRARIES(${PRJ} ${Boost_LIBRARIES})
+
+IF (UNIX AND NOT APPLE)
+    TARGET_LINK_LIBRARIES(${PRJ} rt)
+ENDIF()
+
