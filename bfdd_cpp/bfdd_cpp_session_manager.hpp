@@ -60,7 +60,6 @@ public:
         return(&(itr->second));
     }
     void transmit_unsafe(BfdSession* psess){
-        printf("transmit_unsafe(%p/ %p)\n", (void*)pthread_self(), psess);
         bfd_t   bfd;
         memset(&bfd, 0,sizeof(bfd));
         bfd.h.head.vers   = BFD_VERSION;

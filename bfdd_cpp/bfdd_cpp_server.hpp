@@ -29,7 +29,6 @@ public:
     }
 private:
     void start(){
-        printf("Server::start(%u)\n",port_);
         Conn* pConn =  Conn::create_server_side_connection(udpsock_.get_io_service(),&udpsock_);
         udpsock_.async_receive_from(boost::asio::buffer(pConn->rbuf(), pConn->rsiz()),
                                     udpendp_,
