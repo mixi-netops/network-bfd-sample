@@ -42,9 +42,6 @@ git clone https://github.com/xflagstudio/network-bfd-sample.git
 + installed netmap nic driver.
   + https://github.com/luigirizzo/netmap
 
-```
-
-```
 
 ## compile/link
 
