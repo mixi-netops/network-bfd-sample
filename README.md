@@ -13,6 +13,9 @@ Incomplete Bidirectional Forwarding Detection's implementation
   + c with netmap
     + redirect only.
 
+This is sample code.
+It is not a perfect implementation according to RFC.
+Please use at your own risk.
 
 ## bfdd
 
